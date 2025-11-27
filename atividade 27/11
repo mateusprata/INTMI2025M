@@ -1,0 +1,188 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOuTJBZfKm9IV0FfUCVMLBj",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/mateusprata/INTMI2025M/blob/main/atividade%2027/11\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "dtLQ4rqN7gYD"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 530
+        },
+        "id": "e0b1c09b",
+        "outputId": "5a189134-ebc4-455f-d320-1568a23132eb"
+      },
+      "source": [
+        "\n",
+        "# O programa rodará em um loop infinito (while True) até que o usuário decida sair.\n",
+        "# A opção '0' é usada para interromper o loop com um 'break'.\n",
+        "while True:\n",
+        "    # Exibe o menu principal da calculadora a cada iteração do loop.\n",
+        "    print(\"\\n=========================\")\n",
+        "    print(\"**CALCULADORA INTERATIVA**\")\n",
+        "    print(\"=========================\")\n",
+        "    print(\"Digite o número da opção desejada:\")\n",
+        "    print(\"1 - Múltiplos de 5 em um Intervalo\")\n",
+        "    print(\"2 - Contagem de Números Pares em um Intervalo\")\n",
+        "    print(\"3 - Verificador de Número Primo\")\n",
+        "    print(\"4 - Conversor de Temperatura (Cº para Fº)\")\n",
+        "    print(\"0 - Sair do Programa\")\n",
+        "\n",
+        "    # Solicita a opção do usuário.\n",
+        "    opcao = input(\"Sua opção: \")\n",
+        "\n",
+        "    # ----- Tratamento das Opções (usando if/elif/else) -----\n",
+        "    if opcao == '0':\n",
+        "        # Se o usuário digitar '0', o programa exibe uma mensagem de despedida e encerra.\n",
+        "        print(\"\\nSaindo do programa. Até mais!\")\n",
+        "        break # Interrompe o loop 'while True'\n",
+        "\n",
+        "    elif opcao == '1':\n",
+        "        # --- Opção 1: Múltiplos de 5 em um Intervalo ---\n",
+        "        print(\"\\n--- Múltiplos de 5 em um Intervalo ---\")\n",
+        "        try:\n",
+        "            # Solicita o início e o fim do intervalo e converte para inteiro.\n",
+        "            inicio = int(input(\"Digite o número inicial do intervalo: \"))\n",
+        "            fim = int(input(\"Digite o número final do intervalo: \"))\n",
+        "            print(f\"Múltiplos de 5 entre {inicio} e {fim}:\")\n",
+        "            encontrou = False # Flag para verificar se algum múltiplo foi encontrado.\n",
+        "\n",
+        "            # Percorre o intervalo (incluindo o 'fim').\n",
+        "            for num in range(inicio, fim + 1):\n",
+        "                # Verifica se o número é divisível por 5 (ou seja, múltiplo de 5).\n",
+        "                if num % 5 == 0:\n",
+        "                    print(num)\n",
+        "                    encontrou = True\n",
+        "            if not encontrou:\n",
+        "                print(\"Nenhum múltiplo de 5 encontrado no intervalo.\")\n",
+        "        except ValueError:\n",
+        "            # Captura erros se o usuário digitar algo que não seja um número inteiro.\n",
+        "            print(\"Entrada inválida. Por favor, digite números inteiros.\")\n",
+        "\n",
+        "    elif opcao == '2':\n",
+        "        # --- Opção 2: Contagem de Números Pares em um Intervalo ---\n",
+        "        print(\"\\n--- Contagem de Números Pares em um Intervalo ---\")\n",
+        "        try:\n",
+        "            # Solicita o início e o fim do intervalo.\n",
+        "            inicio = int(input(\"Digite o número inicial do intervalo: \"))\n",
+        "            fim = int(input(\"Digite o número final do intervalo: \"))\n",
+        "            count_pares = 0 # Inicializa o contador de números pares.\n",
+        "            print(f\"Verificando números pares entre {inicio} e {fim}...\")\n",
+        "\n",
+        "            # Percorre o intervalo e conta os números pares.\n",
+        "            for num in range(inicio, fim + 1):\n",
+        "                if num % 2 == 0:\n",
+        "                    count_pares += 1\n",
+        "            print(f\"Total de números pares encontrados: {count_pares}\")\n",
+        "        except ValueError:\n",
+        "            print(\"Entrada inválida. Por favor, digite números inteiros.\")\n",
+        "\n",
+        "    elif opcao == '3':\n",
+        "        # --- Opção 3: Verificador de Número Primo ---\n",
+        "        print(\"\\n--- Verificador de Número Primo ---\")\n",
+        "        try:\n",
+        "            # Solicita um número inteiro positivo.\n",
+        "            numero = int(input(\"Digite um número inteiro positivo: \"))\n",
+        "            if numero <= 1:\n",
+        "                # Números menores ou iguais a 1 não são primos por definição.\n",
+        "                print(f\"O número {numero} não é primo.\")\n",
+        "            else:\n",
+        "                eh_primo = True # Assume que é primo até que se prove o contrário.\n",
+        "                # O loop vai de 2 até a raiz quadrada do número (otimização).\n",
+        "                for i in range(2, int(numero**0.5) + 1):\n",
+        "                    if numero % i == 0:\n",
+        "                        # Se encontrar um divisor, não é primo.\n",
+        "                        eh_primo = False\n",
+        "                        break # Sai do loop, pois já sabemos que não é primo.\n",
+        "                if eh_primo:\n",
+        "                    print(f\"O número {numero} é primo.\")\n",
+        "                else:\n",
+        "                    print(f\"O número {numero} não é primo.\")\n",
+        "        except ValueError:\n",
+        "            print(\"Entrada inválida. Por favor, digite um número inteiro.\")\n",
+        "\n",
+        "    elif opcao == '4':\n",
+        "        # --- Opção 4: Conversor de Temperatura (Cº para Fº) ---\n",
+        "        print(\"\\n--- Conversor de Temperatura (Cº para Fº) ---\")\n",
+        "        try:\n",
+        "            # Solicita a temperatura em Celsius e converte para float.\n",
+        "            celsius = float(input(\"Digite a temperatura em Celsius (Cº): \"))\n",
+        "            # Aplica a fórmula de conversão de Celsius para Fahrenheit.\n",
+        "            fahrenheit = (celsius * 9/5) + 32\n",
+        "            print(f\"{celsius:.2f} Cº equivalem a {fahrenheit:.2f} Fº.\")\n",
+        "        except ValueError:\n",
+        "            print(\"Entrada inválida. Por favor, digite um número para a temperatura.\")\n",
+        "\n",
+        "    else:\n",
+        "        # --- Opção Inválida ---\n",
+        "        # Se o usuário digitar algo diferente das opções válidas.\n",
+        "        print(\"\\nOpção inválida. Por favor, escolha uma opção entre 0 e 4.\")\n"
+      ],
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "=========================\n",
+            "**CALCULADORA INTERATIVA**\n",
+            "=========================\n",
+            "Digite o número da opção desejada:\n",
+            "1 - Múltiplos de 5 em um Intervalo\n",
+            "2 - Contagem de Números Pares em um Intervalo\n",
+            "3 - Verificador de Número Primo\n",
+            "4 - Conversor de Temperatura (Cº para Fº)\n",
+            "0 - Sair do Programa\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "KeyboardInterrupt",
+          "evalue": "Interrupted by user",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mKeyboardInterrupt\u001b[0m                         Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipython-input-1538037791.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     14\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     15\u001b[0m     \u001b[0;31m# Solicita a opção do usuário.\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 16\u001b[0;31m     \u001b[0mopcao\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0minput\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Sua opção: \"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     17\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     18\u001b[0m     \u001b[0;31m# ----- Tratamento das Opções (usando if/elif/else) -----\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\u001b[0m in \u001b[0;36mraw_input\u001b[0;34m(self, prompt)\u001b[0m\n\u001b[1;32m   1175\u001b[0m                 \u001b[0;34m\"raw_input was called, but this frontend does not support input requests.\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1176\u001b[0m             )\n\u001b[0;32m-> 1177\u001b[0;31m         return self._input_request(\n\u001b[0m\u001b[1;32m   1178\u001b[0m             \u001b[0mstr\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mprompt\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1179\u001b[0m             \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_parent_ident\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m\"shell\"\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\u001b[0m in \u001b[0;36m_input_request\u001b[0;34m(self, prompt, ident, parent, password)\u001b[0m\n\u001b[1;32m   1217\u001b[0m             \u001b[0;32mexcept\u001b[0m \u001b[0mKeyboardInterrupt\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1218\u001b[0m                 \u001b[0;31m# re-raise KeyboardInterrupt, to truncate traceback\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1219\u001b[0;31m                 \u001b[0;32mraise\u001b[0m \u001b[0mKeyboardInterrupt\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Interrupted by user\"\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1220\u001b[0m             \u001b[0;32mexcept\u001b[0m \u001b[0mException\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1221\u001b[0m                 \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mlog\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwarning\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Invalid Message:\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mexc_info\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mTrue\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mKeyboardInterrupt\u001b[0m: Interrupted by user"
+          ]
+        }
+      ]
+    }
+  ]
+}
